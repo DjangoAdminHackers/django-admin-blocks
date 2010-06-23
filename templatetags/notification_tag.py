@@ -7,8 +7,9 @@ register = template.Library()
 @register.inclusion_tag('admin_error_notifications.html')
 def error_notifications():
     from admin_notifications import _error_registry
+    notifications = [x for x in [x() for x in _error_registry] if x]
     return {
-        'notifications': [x for x in [x() for x in _error_registry] if x],
+        'notifications': notifications,
     }
     
 
