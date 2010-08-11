@@ -19,5 +19,5 @@ def app_block(app):
     html = u''
     for tuple in _app_block_registry:
         if tuple[0].lower()==app['name'].lower():
-            html += u'\n'.join([x() for x in tuple[1:]])
+            html += u'\n'.join(["<tr><th scope='row' colspan='3'>%s</th></tr>" % x() for x in tuple[1:]])
     return html
