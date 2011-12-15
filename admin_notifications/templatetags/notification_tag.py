@@ -27,3 +27,11 @@ def app_block(context, app):
     else:
         html = ''
     return html
+
+@register.simple_tag
+def extra_script_block():
+    from admin_notifications import _script_block_reqistry
+    html = u''
+    for script in _script_block_reqistry:
+        html += u'%s\n' % script()
+    return html

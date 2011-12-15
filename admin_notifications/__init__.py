@@ -4,6 +4,7 @@ import os
 _error_registry = []
 _alert_registry = []
 _app_block_registry = []
+_script_block_reqistry = []
 
 def register(notifications):
     if type(notifications).__name__=='function':
@@ -14,6 +15,7 @@ def register(notifications):
             'errors': _error_registry,
             'alerts': _alert_registry,
             'app_blocks': _app_block_registry,
+            'script_blocks': _script_block_reqistry,
         }
         for ntype in notifications.keys():
             action = switch[ntype]
