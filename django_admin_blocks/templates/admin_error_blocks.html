@@ -1,0 +1,7 @@
+{% if blocks %}
+    <div id='admin-blocks'>
+        {% for block in blocks %}
+            <p class="errornote">{{ block|safe }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
