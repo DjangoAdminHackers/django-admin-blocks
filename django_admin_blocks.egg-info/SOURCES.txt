@@ -1,7 +1,7 @@
-admin_blocks/__init__.py
-admin_blocks/models.py
-admin_blocks/templatetags/__init__.py
-admin_blocks/templatetags/admin_block_tag.py
+django_admin_blocks/__init__.py
+django_admin_blocks/models.py
+django_admin_blocks/templatetags/__init__.py
+django_admin_blocks/templatetags/admin_block_tag.py
 django_admin_blocks.egg-info/PKG-INFO
 django_admin_blocks.egg-info/SOURCES.txt
 django_admin_blocks.egg-info/dependency_links.txt

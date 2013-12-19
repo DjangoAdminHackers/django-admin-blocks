@@ -8,7 +8,7 @@ setup(name='django-admin-blocks',
       author_email='andy@andybak.net',
       packages=find_packages(),
       package_data={
-          'admin_blocks': [
+          'django_admin_blocks': [
             'templates/*.html',
           ]
       },
