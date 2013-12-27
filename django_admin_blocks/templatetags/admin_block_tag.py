@@ -16,13 +16,14 @@ def app_block(context, app):
     html = u''
     for tuple in _app_block_registry:
         if tuple[0].lower()==app['name'].lower():
+            # TODO move this into a template to allow overriding
             html += u'\n'.join(["<tr><th scope='row' colspan='3'>%s</th></tr>" % x() for x in tuple[1:]])
     return html
 
 @register.simple_tag
-def extra_script_block():
-    from django_admin_blocks import _script_block_reqistry
+def script_block():
+    from django_admin_blocks import _script_block_registry
     html = u''
-    for script in _script_block_reqistry:
-        html += u'%s\n' % script()
+    for script in _script_block_registry:
+        html += u'%s\n' % script
     return html

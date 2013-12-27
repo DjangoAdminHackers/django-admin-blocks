@@ -4,14 +4,13 @@ import os
 _error_registry = []
 _alert_registry = []
 _app_block_registry = []
-_script_block_reqistry = []
+_script_block_registry = []
 
 def register(blocks):
     switch = {
         'errors': _error_registry,
-        'alerts': _alert_registry,
         'app_blocks': _app_block_registry,
-        'script_blocks': _script_block_reqistry,
+        'script_blocks': _script_block_registry,
     }
     for ntype in blocks.keys():
         action = switch[ntype]
