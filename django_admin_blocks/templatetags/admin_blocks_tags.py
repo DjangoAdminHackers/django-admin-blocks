@@ -1,4 +1,5 @@
 from django import template
+from django.conf import settings
 
 register = template.Library()
 
@@ -20,10 +21,27 @@ def app_block(context, app):
             html += u'\n'.join(["<tr><th scope='row' colspan='3'>%s</th></tr>" % x() for x in tuple[1:]])
     return html
 
-@register.simple_tag
-def script_block():
+@register.simple_tag(takes_context=True)
+def script_block(context):
+
     from django_admin_blocks import _script_block_registry
-    html = u''
+
+    # Remove dups while preserviing order
+    already_seen = set()
+    new_list = []
+    for d in _script_block_registry:
+        t = tuple(d.items())
+        if t not in already_seen:
+            already_seen.add(t)
+            new_list.append(d)
+    _script_block_registry = new_list
+
+    scripts = [u'<script>var $ = django.jQuery; var jQuery = $;"</script>',]
+
     for script in _script_block_registry:
-        html += u'%s\n' % script
-    return html
+        if script.get('url_path'):
+            scripts.append(u'<script src="%s%s"></script>' % (settings.STATIC_URL, script['url_path']))
+        elif script.get('code'):
+            scripts.append(u'<script>\n%s</script>' % script['code'])
+
+    return '\n'.join(scripts)
