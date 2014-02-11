@@ -36,7 +36,7 @@ def script_block(context):
             new_list.append(d)
     _script_block_registry = new_list
 
-    scripts = [u'<script>var $ = django.jQuery; var jQuery = $;"</script>',]
+    scripts = [u'<script>if(typeof(django) != "undefined"){var $ = django.jQuery; var jQuery = $;}</script>',]
 
     for script in _script_block_registry:
         if script.get('url_path'):
