@@ -26,7 +26,7 @@ def script_block(context):
 
     from django_admin_blocks import _script_block_registry
 
-    # Remove dups while preserviing order
+    # Remove dups while preserving order
     already_seen = set()
     new_list = []
     for d in _script_block_registry:
