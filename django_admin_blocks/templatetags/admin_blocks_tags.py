@@ -37,8 +37,6 @@ def script_block(context):
     _script_block_registry = new_list
 
     scripts = [
-        # Use Django's jQuery if available
-        u'<script>if(typeof(django) != "undefined"){var $ = django.jQuery; var jQuery = $;}</script>',
     ]
 
     for script in _script_block_registry:
