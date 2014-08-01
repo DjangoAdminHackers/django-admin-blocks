@@ -37,7 +37,7 @@ Sample admin_blocks.py
         return "<a href='%s'>Link Checker</a>" % reverse('linkchecker') 
 
     def filebrowser_app_block():
-        return "<a href='%s'>File Browser</a>" % reverse('fb_browse') 
+        return "<a href='%s'>File Browser</a>" % reverse('filebrowser:fb_browse')
     
     django_admin_blocks.register({
         'errors': (
