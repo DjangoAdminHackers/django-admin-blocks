@@ -1,23 +1,24 @@
 import imp
-import os
 
 _error_registry = []
 _alert_registry = []
 _app_block_registry = []
 _script_block_registry = []
 
+
 def register(blocks):
-    switch = {
-        'errors': _error_registry,
-        'app_blocks': _app_block_registry,
-        'script_blocks': _script_block_registry,
-    }
+    
     for ntype in blocks.keys():
-        action = switch[ntype]
-        for entry in blocks[ntype]:
-            action.append(entry)
+        registry = {
+            'errors': _error_registry,
+            'app_blocks': _app_block_registry,
+            'script_blocks': _script_block_registry,
+        }[ntype]
+        registry += [x for x in blocks[ntype] if x]
+
 
 def autodiscover():
+    
     from django.conf import settings
     for app in settings.INSTALLED_APPS:
         try:
