@@ -38,7 +38,6 @@ def script_block(context):
 
     scripts = [
         # Use Django's jQuery if nothing else is available
-        u'<script>if(typeof($) === "undefined" && typeof(django.jQuery) != "undefined"){var $ = django.jQuery; var jQuery = $;}</script>',
     ]
 
     for script in _script_block_registry:
